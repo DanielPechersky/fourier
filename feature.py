@@ -4,6 +4,8 @@ from functools import partial
 
 import numpy as np
 
+from mpl_toolkits.mplot3d import Axes3D
+
 
 def wrap_around_circle(freq, time):
     return np.exp(-2*np.pi*1j*time*freq)
