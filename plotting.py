@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 import config
 from feature import *
 
@@ -17,7 +15,6 @@ class InteractivePlot:
             self.fm.update()
             plt.draw()
             plt.pause(.001)
-        plt.close()
 
     def finish(self):
         self.done = True

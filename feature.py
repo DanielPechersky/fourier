@@ -3,6 +3,7 @@ import math
 from functools import partial
 
 import numpy as np
+from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 _ = Axes3D
@@ -143,5 +144,6 @@ class FeatureManager:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        plt.close(self.fig)
         del self.features
         del self.fig
