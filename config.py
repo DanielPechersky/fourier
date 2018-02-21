@@ -4,17 +4,16 @@ from feature import *
 
 params = defaultdict(lambda: ([], {}))
 features = [
-    OriginalWave,
+    OriginalFunction,
     FourierSlice,
     AveragePoint,
     Frequency,
-    FrequencySummed
+    FrequencySummed,
+    Description
 ]
 params[FourierSlice] = [], {'axes_limit': 1.5}
-# features = [FourierSlice]
 
 grid = (2, 3)
-# grid = (1, 1)
 
 figsize = (15, 10)
 
@@ -26,6 +25,7 @@ point_count = 1000
 time = np.linspace(**time_limit, num=point_count)
 
 
+# add functions here
 amps = {
     'log': np.log2(time+.001),
     'tan': np.tan(1*2*np.pi*time),
@@ -40,4 +40,5 @@ amps = {
     'exp': 2**time
 }
 
+# change function here
 amp = amps['multi']
