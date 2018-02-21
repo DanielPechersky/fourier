@@ -163,6 +163,7 @@ Drag the 3D plot to rotate it."""
                 transform=ax.transAxes,
                 wrap=True)
 
+
 class FeatureManager:
     def __init__(self, freq, time, amp, fig, grid):
         self.freq = freq
