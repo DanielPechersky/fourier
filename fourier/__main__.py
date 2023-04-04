@@ -1,12 +1,12 @@
-import config
-from feature import *
+from . import config
+from .feature import *
 
 
 class InteractivePlot:
     def __init__(self, fm):
         plt.ion()
         self.done = False
-        fm.fig.canvas.mpl_connect('close_event', lambda *_: self.finish())
+        fm.fig.canvas.mpl_connect("close_event", lambda *_: self.finish())
         self.fm = fm
         self.main_loop()
 
@@ -14,19 +14,21 @@ class InteractivePlot:
         while not self.done:
             self.fm.update()
             plt.draw()
-            plt.pause(.001)
+            plt.pause(0.001)
 
     def finish(self):
         self.done = True
 
 
-plt.style.use('seaborn')
+plt.style.use("seaborn-v0_8")
 
 freq = np.linspace(**config.freq_limit, num=config.point_count)
 time = np.linspace(**config.time_limit, num=config.point_count)
 amp = config.amp
 
-with FeatureManager(freq, time, amp, fig=plt.figure(figsize=config.figsize, dpi=80), grid=config.grid) as fm:
+with FeatureManager(
+    freq, time, amp, fig=plt.figure(figsize=config.figsize, dpi=80), grid=config.grid
+) as fm:
     for i, feature in enumerate(config.features, 1):
         args, kwargs = config.params[feature]
         fm.add_feature(feature, i, *args, **kwargs)
@@ -39,5 +41,3 @@ with FeatureManager(freq, time, amp, fig=plt.figure(figsize=config.figsize, dpi=
         p = InteractivePlot(fm)
     else:
         plt.show()
-
-
