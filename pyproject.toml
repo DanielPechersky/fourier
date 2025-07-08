@@ -1,19 +1,15 @@
-[tool.poetry]
+[project]
 name = "fourier"
 version = "1.0.0"
 description = "An interactive visualization of the Fourier transform"
-authors = ["Daniel Pechersky <danny.pechersky@gmail.com>"]
+authors = [{ name = "Daniel Pechersky", email = "danny.pechersky@gmail.com" }]
+requires-python = "~=3.11.0"
 readme = "README.md"
+dependencies = ["matplotlib>=3.7.1,<4", "numpy>=1.24.2,<2"]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-matplotlib = "^3.7.1"
-numpy = "^1.24.2"
-
-[tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
-black = "^23.3.0"
+[dependency-groups]
+dev = ["flake8>=6.0.0,<7", "black>=23.3.0,<24"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
